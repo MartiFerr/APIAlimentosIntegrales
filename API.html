@@ -1,0 +1,32 @@
+<div class="card rounded shadow text-center p-4 mb-4">
+    <h1 class="fw-bold">Buscar Recetas</h1>
+    <input type="text" id="recetaBuscar" placeholder="Ej: pizza, pasta..." class="form-control my-2">
+    <button id="botonReceta" class="btn btn-success">Buscar</button>
+    <div id="resultadoRecetas" class="row mt-3"></div>
+  </div>
+  <div class="card rounded shadow text-center p-4 mb-4">
+    <h2 class="fw-bold">Buscar Recetas</h2>
+    <input type="text" id="recetaBuscar" placeholder="Ej: pizza, pasta..." class="form-control my-2">
+    <button id="botonReceta" class="btn btn-success">Buscar</button>
+    <div id="resultadoRecetas" class="row mt-3"></div>
+  </div>
+
+  <div class="modal fade" id="modalDetalles" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tituloDetalle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img id="imagenDetalle" class="img-fluid rounded mb-3">
+          <h6>🍴 Ingredientes</h6>
+          <ul id="ingredientesDetalle"></ul>
+          <h6>📝 Instrucciones</h6>
+          <p id="instruccionesDetalle"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
