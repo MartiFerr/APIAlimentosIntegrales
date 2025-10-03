@@ -2,7 +2,7 @@
     width: 100%; 
     max-width: 700px; 
     margin: 0 auto 2rem auto;
-    background-color: #f8feff;
+    background-color: #b69755;
     border-radius: 10px;
     padding: 2rem;
     text-align: center;
@@ -36,8 +36,8 @@
     padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 5px;
-    background-color: rgb(118, 131, 173);
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: rgb(10, 10, 10);
     font-weight: bold;
     cursor: pointer;
 }
@@ -57,4 +57,11 @@
 }
 body {
     background-color: rgb(255, 244, 231);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.8rem;      
+    font-weight: 600;       
+    margin-bottom: 1rem;     
+    text-align: center;      
 }
