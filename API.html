@@ -38,7 +38,7 @@
      style="max-width: 350px;">
 </div>
 <div class="card rounded shadow text-center p-4 mb-4">
-    <h1 class="display-4 main fw-bold " >Buscar Recetas</h1>
+    <h1 class="display-4 main fw-bold titulo-verde" >Buscar Recetas</h1>
     <input type="text" id="recetaBuscar" placeholder="Ej: pizza, pasta..." class="form-control my-2">
     <button id="botonReceta" class="btn btn-success">Buscar</button>
     <div id="resultadoRecetas" class="row mt-3"></div>
@@ -63,14 +63,14 @@
 </div>
 
     <div class="card p-4 mb-4 shadow">
-        <h1 class="display-4 main fw-bold ">Búsqueda por intolerancias</h2>
+        <h2 class="display-4 main fw-bold titulo-verde" >Búsqueda por intolerancias</h2>
         <input type="text" id="intoleranciasBuscar" placeholder="Ej: gluten,dairy" class="form-control my-2">
         <button id="botonIntolerancias" class="btn btn-warning">Buscar</button>
         <div id="resultadoIntolerancias" class="row mt-3"></div>
     </div>
 
     <div class="card p-4 mb-4 shadow">
-        <h1 class="display-4 main fw-bold ">Buscar recetas por ingredientes</h2>
+        <h1 class="display-4 main fw-bold titulo-verde">Buscar recetas por ingredientes</h2>
         <input type="text" id="ingredientesBuscar" placeholder="Ej: tomato,cheese,basil" class="form-control my-2">
         <button id="botonIngredientes" class="btn btn-success">Buscar</button>
         <div id="resultadoIngredientes" class="row mt-3"></div>
@@ -96,6 +96,42 @@
       </div>
     </div>
 </div>
+<div class="container py-5">
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-body text-center">
+      <h4 class="fw-bold text-success mb-3">Contador Nutricional</h4>
+      <div class="row text-center">
+        <div class="col-6 col-md-3">
+          <p class="fw-bold mb-1">Calorías</p>
+          <p id="totalCalorias" class="text-primary fs-5">0</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <p class="fw-bold mb-1">Carbohidratos</p>
+          <p id="totalCarbohidratos" class="text-primary fs-5">0 g</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <p class="fw-bold mb-1">Grasas</p>
+          <p id="totalGrasas" class="text-primary fs-5">0 g</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <p class="fw-bold mb-1">Proteínas</p>
+          <p id="totalProteinas" class="text-primary fs-5">0 g</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="fw-bold text-center mb-4 text-success titulo-verde">Buscar Recetas</h2>
+  <div class="input-group my-3">
+    <input type="text" id="entrada" class="form-control" placeholder="Ej: quinoa, arroz integral, avena...">
+    <button id="botonBuscar" class="btn btn-success">Buscar</button>
+  </div>
+
+  <div id="resultados" class="row g-4 mt-4"></div>
+
+</div>
+
 <div class="text-center p-3 fw-bold " style="background-color:rgb(255, 244, 231); ">
         <p>Spoonacular - API </p>
     </div>

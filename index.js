@@ -143,5 +143,92 @@ botonIngredientes.onclick = function() {
         })
         .catch(err => console.error(err));
 }
+// Función para buscar recetas
+let buscarRecetas = async () => {
+    let query = document.getElementById("entrada").value.trim();
+    let contenedor = document.getElementById("resultados");
 
+    if (!query) {
+      contenedor.innerHTML = `<p class="text-center text-danger">Por favor, escribe un ingrediente.</p>`;
+      return;
+    }
+
+    contenedor.innerHTML = `
+      <div class="col-12 text-center">
+        <div class="spinner-border text-success" role="status"></div>
+        <p class="mt-2">Buscando recetas...</p>
+      </div>
+    `;
+
+    let respuesta = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=6&apiKey=${APIKeySpoon}`);
+    let datos = await respuesta.json();
+
+    if (datos.results.length === 0) {
+      contenedor.innerHTML = `<p class="text-center text-danger">No se encontraron recetas con ese ingrediente.</p>`;
+      return;
+    }
+
+    contenedor.innerHTML = datos.results.map(r => `
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="${r.image}" class="card-img-top" alt="${r.title}">
+          <div class="card-body text-center">
+            <h5 class="card-title">${r.title}</h5>
+            <button class="btn btn-outline-success" onclick="verInfoNutricional(${r.id})">Ver información</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  };
+
+  // Función para mostrar información nutricional e ingredientes
+  async function verInfoNutricional(id) {
+    let contenedor = document.getElementById("resultados");
+    contenedor.innerHTML = `
+      <div class="col-12 text-center">
+        <div class="spinner-border text-success" role="status"></div>
+        <p class="mt-2">Cargando información...</p>
+      </div>
+    `;
+
+    let nutricion = await fetch(`https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=${APIKeySpoon}`);
+    let info = await nutricion.json();
+
+    let ingredientesData = await fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${APIKeySpoon}`);
+    let ingredientes = await ingredientesData.json();
+
+    // Actualizar el contador nutricional superior
+    document.getElementById("totalCalorias").textContent = info.calories;
+    document.getElementById("totalCarbohidratos").textContent = info.carbs;
+    document.getElementById("totalGrasas").textContent = info.fat;
+    document.getElementById("totalProteinas").textContent = info.protein;
+
+    contenedor.innerHTML = `
+      <div class="col-12">
+        <div class="card shadow p-4 text-start">
+          <h2 class="text-center fw-bold mb-3 text-success">Información Nutricional</h2>
+          <p><strong>Calorías:</strong> ${info.calories}</p>
+          <p><strong>Carbohidratos:</strong> ${info.carbs}</p>
+          <p><strong>Grasas:</strong> ${info.fat}</p>
+          <p><strong>Proteínas:</strong> ${info.protein}</p>
+
+          <h6 class="mt-4"> Ingredientes</h6>
+          <ul id="ingredientesDetalle" class="list-group mb-3">
+            ${ingredientes.ingredients.map(i => `
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                ${i.name}
+                <span class="badge bg-success rounded-pill">${i.amount.metric.value} ${i.amount.metric.unit}</span>
+              </li>
+            `).join('')}
+          </ul>
+
+          <div class="text-center">
+            <button class="btn btn-danger" onclick="location.reload()">Volver</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  document.getElementById("botonBuscar").onclick = buscarRecetas;
            
