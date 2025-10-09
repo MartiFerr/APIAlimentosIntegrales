@@ -69,8 +69,18 @@ h1, h2, h3, h4, h5, h6 {
     color: #198754; 
     font-weight: bold;
   }
-  .titulo-verde {
-    color: #198754;
-    font-weight: bold;
-  }
+ ul {
+  list-style-position: inside;  /* los puntos se alinean con el texto */
+  padding-left: 0;              /* quita el espacio interior */
+  margin-left: 0;               /* quita el margen exterior */
+  text-align: left;             /* asegura que el texto esté alineado a la izquierda */
+}
+.titulo-verde {
+  font-size: 1.8rem; /* o el tamaño que prefieras */
+  color:  #198754;    /* si querés mantener el verde */
+  font-weight: 700;  /* negrita */
+}
+
+
+
   
